@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Counter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+    }
+    #count {
+      font-size: 72px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    button {
+      font-size: 18px;
+      padding: 4px 10px;
+      margin-right: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="count">0</div>
+  <button id="add">+1</button>
+  <button id="sub">-1</button>
+  <button id="reset">Reset</button>
+
+  <script>
+    let num = 0;
+    const countDisplay = document.getElementById("count");
+    document.getElementById("add").onclick = function() {
+      num++;
+      countDisplay.textContent = num;
+    };
+    document.getElementById("sub").onclick = function() {
+      num--;
+      countDisplay.textContent = num;
+    };
+    document.getElementById("reset").onclick = function() {
+      num = 0;
+      countDisplay.textContent = num;
+    };
+  </script>
+</body>
+</html>

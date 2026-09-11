@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Information</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    input {
+      padding: 4px 6px;
+      font-size: 16px;
+      width: 140px;
+    }
+    button {
+      padding: 4px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Information</h1>
+
+  <div>
+    <input type="text" id="productId" value="11">
+    <button id="getBtn">Get Product</button>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <p id="title">Title: </p>
+    <p id="category">Category: </p>
+    <p id="description">Description: </p>
+    <p id="price">Price: </p>
+  </div>
+
+  <script>
+    const btn = document.getElementById("getBtn");
+    const input = document.getElementById("productId");
+    btn.onclick = function() {
+      const id = input.value;
+      if (!id) return;
+      fetch("https://dummyjson.com/products/" + id)
+        .then(function(res) {
+          return res.json();
+        })
+        .then(function(data) {
+          document.getElementById("title").textContent = "Title: " + data.title;
+          document.getElementById("category").textContent = "Category: " + data.category;
+          document.getElementById("description").textContent = "Description: " + data.description;
+          document.getElementById("price").textContent = "Price: " + data.price;
+        })
+        .catch(function(err) {
+          console.log("Error:", err);
+        });
+    };
+  </script>
+</body>
+</html>
